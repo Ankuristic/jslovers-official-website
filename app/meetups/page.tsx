@@ -5,6 +5,15 @@ import { SPEAKERS } from "@/config/speakers";
 import SpeakerCard from "@/components/Cards/SpeakerCard";
 
 export default async function page() {
+ 
+  const tweetText = "Join this awesome Meetup event!";
+  const eventURL = encodeURIComponent("https://your-meetup-url.com");
+  const hashtags = "Meetup,TechEvent";
+
+  const twitterIntentURL = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+    tweetText
+  )}&url=${eventURL}&hashtags=${hashtags}`;
+
   return (
     <>
       <section className="container flex flex-col gap-9 items-center lg:flex-row-reverse lg:justify-around lg:gap-4">
@@ -18,7 +27,7 @@ export default async function page() {
         />
 
         <div className="flex flex-col items-center gap-5 text-center max-w-[415px] lg:text-start lg:items-start">
-          <h1 className="page-heading text-5xl lg:text-7xl">Temp Page</h1>
+          <h1 className="page-heading text-5xl lg:text-7xl"> Meetup Event</h1>
 
           <p className="max-w-xl text-base font-medium lg:text-lg text-text-paragraph">
             Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
@@ -44,6 +53,34 @@ export default async function page() {
             />
           </button>
         </div>
+      </section>
+
+       { /* Tweet about Meetup Section */}
+       <section className="container py-16 text-center">
+       <h2 className="text-4xl font-semibold mb-6">Spread the Word!</h2>
+
+        <p className="text-lg font-medium mb-4">
+          Excited about the meetup? Let your friends know!
+        </p>
+
+        <a
+          href={twitterIntentURL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={cn(
+            buttonVariants(),
+            "flex items-center gap-2 justify-center border-2 border-border text-base font-medium h-[50px] lg:border-4 lg:text-xl lg:py-8 lg:rounded-[10px]"
+          )}
+        >
+          <Image
+            src="/assets/icons/twitter.svg"
+            width={20}
+            height={20}
+            alt="Twitter Logo"
+            className="w-5 h-5"
+          />
+          Tweet about this Meetup
+        </a>
       </section>
 
       <section className="container py-16 text-center md:text-left">
